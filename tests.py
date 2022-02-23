@@ -70,7 +70,7 @@ def simulate_glider():
         [0,0,0,0,0,0,0,0,0,0,0,0]
     ])
 
-    gol.simulate()
+    gol.simulate(2)
     
 def simulate_blinker():
     gol = GameOfLife([

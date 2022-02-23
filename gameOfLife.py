@@ -14,8 +14,8 @@ class GameOfLife:
             for col in range(self.m):
                 neighbour_count = self.get_neighbour_count(row, col)
                 state = self.board[row, col]
-                status_change = self.apply_rules(state, neighbour_count)
-                if status_change:
+                state_change = self.apply_rules(state, neighbour_count)
+                if state_change:
                     changes.append((row, col))
         
         for row, col in changes:
@@ -34,7 +34,7 @@ class GameOfLife:
     
     def apply_rules(self, state, neighbour_count):
         alive = state == 1
-        death = alive and (neighbour_count < 2 or neighbour_count > 3)
+        death = alive and not neighbour_count in (2, 3)
         birth = not alive and neighbour_count == 3
         return death or birth
     
@@ -45,9 +45,9 @@ class GameOfLife:
         plt.imshow(self.board, cmap="binary")
         plt.show()
         
-    def simulate(self, n_ten_iter=1):
+    def simulate(self, generation_decades=1):
         # matplot magic stolen from https://stackoverflow.com/a/55876734
-        ax_rows = 10 * n_ten_iter // 5
+        ax_rows = 10 * generation_decades // 5
                 
         Z = self.board
 
