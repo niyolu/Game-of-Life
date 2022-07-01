@@ -44,7 +44,7 @@ class GameOfLife:
         self.grid[row][col] ^= 1
 
     def visualize(self, X, Y, ax, gen):
-        # matplot magic stolen from https://stackoverflow.com/a/55876734
+        # https://stackoverflow.com/a/55876734
         ax.scatter(X[self.grid > 0], Y[self.grid > 0], color="k")
         ax.grid(True, color="k")
         ax.xaxis.set_major_locator(mticker.MultipleLocator())
